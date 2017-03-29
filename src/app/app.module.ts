@@ -13,6 +13,7 @@ import { SortPipe } from './sort.pipe';
 import { FormDetailsComponent } from './form-details/form-details.component';
 import { SummaryComponent } from './summary/summary.component';
 import { SearchPipe } from './search.pipe';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchPipe } from './search.pipe';
     SortPipe,
     FormDetailsComponent,
     SummaryComponent,
-    SearchPipe
+    SearchPipe,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

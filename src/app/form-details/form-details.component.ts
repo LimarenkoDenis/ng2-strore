@@ -13,7 +13,7 @@ export class FormDetailsComponent {
   @Output()
   public submit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
-  onSubmit(event) {
+  public onSubmit(event): void {
     event.stopPropagation();
     this.submit.emit(this.details);
   }
