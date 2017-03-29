@@ -31,6 +31,14 @@ export class CartComponent implements OnInit {
     this._cartService.Item = { product, action: 'remove'};
   }
 
+  public reduceItem(product: Product): void {
+    this._cartService.Item = { product, action: 'reduce'};
+  }
+
+  public increaseItem(product: Product): void {
+    this._cartService.Item = { product, action: 'increase'};
+  }
+
   private calculateTotal(cart: Product[]): void {
     this.sum = 0;
     cart.forEach((item: Product) => {

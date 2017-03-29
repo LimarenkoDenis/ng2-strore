@@ -12,8 +12,8 @@
     </md-card-header>
     <img md-card-image src="http://thejizn.com/wp-content/uploads/2016/06/coca-cola-stash-can-12-oz-1_1.jpg">
     <md-card-actions>
+      <button md-raised-button (click)="addProduct(product)">BUY</button>
       <button md-button>{{product.price | currency}}</button>
-      <button md-button (click)="addProduct(product)">BUY</button>
     </md-card-actions>
   </md-card>
 </div>

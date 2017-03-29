@@ -1,6 +1,10 @@
-<md-card *ngFor="let item of cart">
-  <md-card-title>{{item.title}}</md-card-title>
-    {{item | json}} <span (click)="removeItem(item)">X</span>
+<md-card *ngFor="let item of cart" fxLayout="row">
+  <md-card-title fxFlex="70">{{item.title}}</md-card-title>
+  <md-card-title fxFlex="30">{{item.amount}}</md-card-title>
+  <md-card-title fxFlex="30">{{item.price | currency}}</md-card-title>
+  <a fxFlex="5" (click)="reduceItem(item)"><i class="fa fa-minus" aria-hidden="true"></i></a>
+  <a fxFlex="5" (click)="increaseItem(item)"><i class="fa fa-plus" aria-hidden="true"></i></a>
+  <a fxFlex="5" (click)="removeItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></a>
 </md-card>
+<md-card fxLayoutAlign="end">Total: {{sum}}</md-card>
 
-Total:{{sum}}
