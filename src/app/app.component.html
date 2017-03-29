@@ -1,17 +1,14 @@
 <div fxLayout="column">
   <app-header></app-header>
   <div fxLayout='row' fxLayoutAlign="space-between">
-
     <div fxFlex="50">
       <app-products></app-products>
     </div>
-
     <div fxFlex="50">
       <md-card>
         <app-form-details [details]="details" (submit)="createOrder($event)"></app-form-details>
       </md-card>
       <app-cart></app-cart>
-      <div>Total: {{sum}}</div>
     </div>
   </div>
 </div>

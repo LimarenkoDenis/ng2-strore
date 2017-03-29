@@ -1,11 +1,13 @@
 import { CartService } from './../cart.service';
 import { ProductService } from './../product.service';
 import { Component, EventEmitter, Input,  OnInit, Output  } from '@angular/core';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
+
 export class ProductsComponent implements OnInit {
 
   public products: Product[];
@@ -27,7 +29,7 @@ export class ProductsComponent implements OnInit {
   }
 
   public addProduct(product: Product): void {
-    this._cartService.addItem = {product,action:'add'};
+    this._cartService.Item = {product, action: 'add' };
   }
 
 }
