@@ -1,0 +1,8 @@
+.card__wrap {
+  /*flex-wrap: wrap;
+  align-content: flex-start;*/
+  /*justify-content:center;*/
+}
+.card_product {
+  width: 31%;
+}
