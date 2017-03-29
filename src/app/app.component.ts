@@ -1,3 +1,4 @@
+import { CartService } from './cart.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from './product.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,17 +8,15 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent{
 
   public sum: number = 0;
   public details: FormGroup;
-  public products: Product[];
-  public tab: string[];
-  public cart: Product[] = [];
 
   public constructor(
     private _productService: ProductService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _CartService: CartService
   ) {
     this.details = this._fb.group({
       name: ['', Validators.required],
@@ -25,26 +24,6 @@ export class AppComponent implements OnInit {
       phone: ['', Validators.required],
       address: ['', [Validators.required]]
     });
-  }
-
-  public ngOnInit(): void {
-    this.getProduct();
-  }
-
-  public getProduct(): void {
-    this._productService.getProducts().subscribe((products: Product[]) => this.products = products);
-    this._productService.getTab().subscribe((tab: string[]) => this.tab = tab);
-  }
-
-  public addProduct(product: Product): void {
-    if (this.cart.includes(product)) {
-      const index: number = this.cart.indexOf(product);
-      this.cart[index].amount++;
-      this.calculateTotal(this.cart);
-      return;
-    }
-    this.cart.push(product);
-    this.calculateTotal(this.cart);
   }
 
   public calculateTotal(cart: Product[]): void {

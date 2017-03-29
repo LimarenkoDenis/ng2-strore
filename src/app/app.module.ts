@@ -14,6 +14,8 @@ import { FormDetailsComponent } from './form-details/form-details.component';
 import { SummaryComponent } from './summary/summary.component';
 import { SearchPipe } from './search.pipe';
 import { ProductsComponent } from './products/products.component';
+import { CartService } from './cart.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ProductsComponent } from './products/products.component';
     FormDetailsComponent,
     SummaryComponent,
     SearchPipe,
-    ProductsComponent
+    ProductsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { ProductsComponent } from './products/products.component';
     MaterialModule,
     FlexLayoutModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

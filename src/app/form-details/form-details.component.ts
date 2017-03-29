@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output  } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ export class FormDetailsComponent {
   public submit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
 
   public onSubmit(event): void {
-    event.stopPropagation();
+    // event.stopPropagation();
     this.submit.emit(this.details);
   }
 }
