@@ -4,16 +4,13 @@
 <md-tab-group md-dynamic-height md-border-bottom md-autoselect >
   <md-tab *ngFor="let tab of tab; let i = index" label="{{tab}}"></md-tab>
 </md-tab-group>
-<div fxLayout='row' fxLayoutAlign="center" fxLayoutWrap fxLayoutGap="10px">
-  <md-card class="card_product" *ngFor="let  product of products|sort: 'drink' | search: search.value">
-    <md-card-header>
-      <md-card-title>{{product.title}}</md-card-title>
-      <md-card-subtitle>{{product.description}}</md-card-subtitle>
-    </md-card-header>
+<md-grid-list cols="3">
+  <md-grid-tile rowspan="1" colspan="1" *ngFor="let  product of products|sort: 'drink' | search: search.value" >
+    <md-grid-tile-header>{{product.title}}</md-grid-tile-header>
     <img md-card-image src="http://thejizn.com/wp-content/uploads/2016/06/coca-cola-stash-can-12-oz-1_1.jpg">
-    <md-card-actions>
-      <button md-raised-button (click)="addProduct(product)">BUY</button>
+    <md-grid-tile-footer  fxLayout="row" fxLayoutAlign="space-between center">
+      <button md-raised-button color="accent" (click)="addProduct(product)">BUY</button>
       <button md-button>{{product.price | currency}}</button>
-    </md-card-actions>
-  </md-card>
-</div>
+    </md-grid-tile-footer>
+  </md-grid-tile>
+</md-grid-list>

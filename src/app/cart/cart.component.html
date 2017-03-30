@@ -1,9 +1,9 @@
 <md-card *ngFor="let item of cart" fxLayout="row">
-  <md-card-title fxFlex="70">{{item.title}}</md-card-title>
-  <md-card-title fxFlex="30">{{item.amount}}</md-card-title>
-  <md-card-title fxFlex="30">{{item.price | currency}}</md-card-title>
+  <md-card-title fxFlex="60">{{item.title}}</md-card-title>
   <a fxFlex="5" (click)="reduceItem(item)"><i class="fa fa-minus" aria-hidden="true"></i></a>
-  <a fxFlex="5" (click)="increaseItem(item)"><i class="fa fa-plus" aria-hidden="true"></i></a>
+  <md-card-title fxFlex="5">{{item.amount}}</md-card-title>
+  <a fxFlex="15" (click)="increaseItem(item)"><i class="fa fa-plus" aria-hidden="true"></i></a>
+  <md-card-title fxFlex="40">{{item.price | currency}}</md-card-title>
   <a fxFlex="5" (click)="removeItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></a>
 </md-card>
 <md-card fxLayoutAlign="end">Total: {{sum}}</md-card>
