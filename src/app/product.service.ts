@@ -13,8 +13,4 @@ export class ProductService {
   public getProducts(): Observable<Product[]> {
     return this._http.get(`assets/products.json`).map((res: Response) => res.json());
   }
-
-  public getTab(): Observable<string[]> {
-    return this._http.get(`assets/tab.json`).map((res: Response) => res.json());
-  }
 }

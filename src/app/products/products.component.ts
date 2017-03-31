@@ -11,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   public products: Product[] = [];
-  public tab: string[] = [];
 
   public constructor(
     private _productService: ProductService,
@@ -23,7 +22,6 @@ export class ProductsComponent implements OnInit {
   }
 
   public getProduct(): void {
-    this._productService.getTab().subscribe((tab: string[]) => this.tab = tab);
     this._productService.getProducts().subscribe((products: Product[]) => this.products = products);
   }
 

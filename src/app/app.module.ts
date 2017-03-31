@@ -19,6 +19,7 @@ import { CartService } from './cart.service';
 
 import { SortPipe } from './sort.pipe';
 import { SearchPipe } from './search.pipe';
+import { CategoryPipe } from './category.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SearchPipe } from './search.pipe';
     SummaryComponent,
     SearchPipe,
     ProductsComponent,
-    CartComponent
+    CartComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
