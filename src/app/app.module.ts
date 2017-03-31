@@ -14,12 +14,12 @@ import { ProductsComponent } from './products/products.component';
 import { CartComponent } from './cart/cart.component';
 import { SummaryComponent } from './summary/summary.component';
 
-import { ProductService } from './product.service';
-import { CartService } from './cart.service';
+import { ProductService } from './shared/services/product.service';
+import { CartService } from './shared/services/cart.service';
 
-import { SortPipe } from './sort.pipe';
-import { SearchPipe } from './search.pipe';
-import { CategoryPipe } from './category.pipe';
+import { SortPipe } from './shared/pipes/sort.pipe';
+import { SearchPipe } from './shared/pipes/search.pipe';
+import { CategoryPipe } from './shared/pipes/category.pipe';
 
 @NgModule({
   declarations: [
