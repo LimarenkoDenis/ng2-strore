@@ -5,15 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryPipe implements PipeTransform {
 
-  transform(products: Product[]): any {
-    const array = [];
-    products.forEach(item => {
-      const index = array.indexOf(item.type);
+  transform(products: Product[]): Product[] {
+    const categories = [];
+    products.forEach((item: Product) => {
+      const index = categories.indexOf(item.type);
       if (index === -1){
-        array.push(item.type);
+        categories.push(item.type);
       }
     })
-   return array;
+   return categories;
   }
 
 }

@@ -6,7 +6,7 @@
     <md-grid-list cols="3">
       <md-grid-tile rowspan="1" colspan="1" *ngFor="let  product of products | sort: tab | search: search.value">
         <md-grid-tile-header>{{product.title}}</md-grid-tile-header>
-        <img md-card-image src="http://thejizn.com/wp-content/uploads/2016/06/coca-cola-stash-can-12-oz-1_1.jpg">
+        <img class="img"  md-card-image [src]="product.photo">
         <md-grid-tile-footer  fxLayout="row" fxLayoutAlign="space-between center">
           <button md-raised-button color="accent" (click)="addProduct(product)">BUY</button>
           <button md-button>{{product.price | currency}}</button>
