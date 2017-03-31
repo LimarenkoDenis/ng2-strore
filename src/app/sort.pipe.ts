@@ -6,13 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
 
   public transform(products: Product[], queryString?: string): Product[] {
-    // if (!queryString) {
-    //   return products;
-    // }
-    // return products.filter((product: Product) => {
-    //   return  product.type.toLowerCase().indexOf(queryString.toLowerCase()) !== -1;
-    // });
-    return  products;
+    if (!queryString) {
+      return products;
+    }
+    return products.filter((product: Product) => {
+      return  product.type.toLowerCase().indexOf(queryString.toLowerCase()) !== -1;
+    });
   }
 
 }
