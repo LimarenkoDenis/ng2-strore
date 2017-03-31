@@ -5,15 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryPipe implements PipeTransform {
 
-  transform(products: Product[]): Product[] {
-    const categories = [];
-    products.forEach((item: Product) => {
-      const index = categories.indexOf(item.type);
-      if (index === -1){
-        categories.push(item.type);
-      }
-    })
-   return categories;
+  transform(products: Product[]): string[] {
+    //  return  [...new Set(products.map(item => item.type)) as any]; why???
+    return products.map(item => item.type).filter((value, index, self) => self.indexOf(value) === index);
   }
 
 }
