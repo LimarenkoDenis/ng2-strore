@@ -24,6 +24,8 @@ import { NotificationService } from './shared/services/notifications.service';
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { CategoryPipe } from './shared/pipes/category.pipe';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
     SearchPipe,
     ProductsComponent,
     CartComponent,
-    CategoryPipe
+    CategoryPipe,
+    ProductDetailComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<md-card fxLayout="column" *ngIf="product" fxLayoutAlign="center center" class="detail">
+  <md-grid-tile-header>
+    <md-card-title>{{product.title}}</md-card-title>
+    <md-card-subtitle>{{product.price}} $</md-card-subtitle>
+    <md-card-subtitle>{{product.description}}</md-card-subtitle>
+  </md-grid-tile-header>
+  <img class="img" md-card-image [src]="product.photo">
+  <md-grid-tile-footer>
+    <button md-raised-button color="accent" (click)="addProduct(product)">BUY</button>
+  </md-grid-tile-footer>
+</md-card>

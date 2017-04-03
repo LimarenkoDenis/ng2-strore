@@ -5,14 +5,17 @@
   <md-tab *ngFor="let tab of products | category" label="{{tab}}">
     <md-grid-list cols="6">
       <md-grid-tile rowspan="1" colspan="1" *ngFor="let  product of products | sort: tab | search: search.value">
-        <md-grid-tile-header>{{product.title}}</md-grid-tile-header>
+        <md-grid-tile-header fxLayoutAlign="space-between center">
+          {{product.title}}
+          <div fxFlex></div>
+          {{product.price}} $
+        </md-grid-tile-header>
         <img class="img"  md-card-image [src]="product.photo">
         <md-grid-tile-footer  fxLayout="row" fxLayoutAlign="space-between center">
           <button md-raised-button color="accent" (click)="addProduct(product)">BUY</button>
-          <button md-button>{{product.price | currency}}</button>
+          <button md-raised-button color="primary" [routerLink]="['/product', product.id]">INFO</button>
         </md-grid-tile-footer>
       </md-grid-tile>
     </md-grid-list>
   </md-tab>
 </md-tab-group>
-<simple-notifications></simple-notifications>
