@@ -9,7 +9,7 @@ export class CartService {
 
   private _cart$$: Subject<ProductWithAction> = new Subject();
 
-  public constructor() { }
+  public constructor() {}
 
   public set Item(product: ProductWithAction) {
     this._cart$$.next(product);

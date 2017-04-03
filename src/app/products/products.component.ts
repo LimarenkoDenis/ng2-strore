@@ -1,3 +1,4 @@
+import { NotificationService } from './../shared/services/notifications.service';
 import { CartService } from './../shared/services/cart.service';
 import { ProductService } from './../shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,8 @@ export class ProductsComponent implements OnInit {
 
   public constructor(
     private _productService: ProductService,
-    private _cartService: CartService
+    private _cartService: CartService,
+    private _notificationsService: NotificationService,
   ) {}
 
   public ngOnInit(): void {
@@ -27,6 +29,6 @@ export class ProductsComponent implements OnInit {
 
   public addProduct(product: Product): void {
     this._cartService.Item = {product, action: 'add' };
+    this._notificationsService.successNotification();
   }
-
 }

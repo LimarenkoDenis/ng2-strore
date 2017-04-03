@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import  { routes } from './app.routes';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {SimpleNotificationsModule} from 'angular2-notifications';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { SummaryComponent } from './summary/summary.component';
 
 import { ProductService } from './shared/services/product.service';
 import { CartService } from './shared/services/cart.service';
+import { NotificationService } from './shared/services/notifications.service';
 
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { SearchPipe } from './shared/pipes/search.pipe';
@@ -41,12 +43,14 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
     HttpModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
+    SimpleNotificationsModule.forRoot(),
     MaterialModule,
     FlexLayoutModule,
   ],
   providers: [
     ProductService,
-    CartService
+    CartService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
