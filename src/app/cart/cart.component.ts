@@ -17,15 +17,10 @@ export class CartComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.getCartItems();
-  }
-
-  public getCartItems(): void {
-    this._cartService.getItems.subscribe((cart: Product[]) => {
-      console.log(cart);
+    this._cartService.getCart().subscribe((cart:Product[]) => {
       this.cart = cart;
-      this.calculateTotal(this.cart);
-    });
+      this.calculateTotal(cart);
+    })
   }
 
   public removeItem(product: Product): void {

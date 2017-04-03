@@ -7,6 +7,8 @@ type ProductWithAction = { product: Product, action: 'add'|'remove'|'increase'|'
 @Injectable()
 export class CartService {
 
+  public cart : Product[] = [];
+
   private _cart$$: Subject<ProductWithAction> = new Subject();
 
   public constructor() {}
@@ -41,9 +43,14 @@ export class CartService {
           }
           acc[index].amount--;
       }
+       this.cart = acc;
       return acc;
     }, []);
   }
 
+
+  public getCart (): Observable<Product[]> {
+    return Observable.of(this.cart);
+  }
 }
 
