@@ -22,6 +22,8 @@ export class CartComponent implements OnInit {
 
   public getCartItems(): void {
     this._cartService.getItems.subscribe((cart: Product[]) => {
+      console.log(cart);
+
       this.cart = cart;
       this.calculateTotal(this.cart);
     });

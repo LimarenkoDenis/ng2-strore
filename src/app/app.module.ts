@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import  { routes } from './app.routes';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
@@ -37,6 +39,7 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
+    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,

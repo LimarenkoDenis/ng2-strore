@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output  } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-details',
@@ -7,15 +7,22 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./form-details.component.css']
 })
 export class FormDetailsComponent {
-  @Input()
+
   public details: FormGroup;
 
-  @Output()
-  public submit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  public constructor(
+    private _fb: FormBuilder
+  ) {
+    this.details = this._fb.group({
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      address: ['', [Validators.required]]
+    });
+  }
 
-  public onSubmit(event): void {
-    // event.stopPropagation();
-    this.submit.emit(this.details);
+  public createOrder(order: FormGroup): void {
+    console.log(order.value);
   }
 }
 
