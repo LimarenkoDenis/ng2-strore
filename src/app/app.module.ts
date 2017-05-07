@@ -16,6 +16,10 @@ import { SummaryComponent } from './summary/summary.component';
 
 import { ProductService } from './shared/services/product.service';
 import { CartService } from './shared/services/cart.service';
+import { UtilsService } from './shared/services/utils.service';
+
+import { environment } from '../environments/environment';
+import { DOMAIN } from './config';
 
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { SearchPipe } from './shared/pipes/search.pipe';
@@ -31,7 +35,7 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
     SearchPipe,
     ProductsComponent,
     CartComponent,
-    CategoryPipe
+    CategoryPipe,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,12 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
   ],
   providers: [
     ProductService,
-    CartService
+    CartService,
+    UtilsService,
+    {
+      provide: DOMAIN,
+      useValue: environment.domain,
+    }
   ],
   bootstrap: [AppComponent]
 })
