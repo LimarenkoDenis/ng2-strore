@@ -20,12 +20,24 @@ import { SummaryComponent } from './summary/summary.component';
 import { ProductService } from './shared/services/product.service';
 import { CartService } from './shared/services/cart.service';
 import { NotificationService } from './shared/services/notifications.service';
+import { UtilsService } from './shared/services/utils.service';
+
+import { environment } from '../environments/environment';
+import { DOMAIN } from './config';
 
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { CategoryPipe } from './shared/pipes/category.pipe';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { FooterComponent } from './footer/footer.component';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { reducers } from './common/reducers';
+import { ProductEffects } from './common/effects/product';
+import { CartActions } from './common/actions/cart';
+import { ProductActions } from './common/actions/product';
 
 @NgModule({
   declarations: [
@@ -50,11 +62,26 @@ import { FooterComponent } from './footer/footer.component';
     SimpleNotificationsModule.forRoot(),
     MaterialModule,
     FlexLayoutModule,
+    StoreModule.forRoot(reducers, {
+      initialState: {
+        auth: {
+          loggedIn: true
+        }
+      }
+    }),
+    EffectsModule.forRoot([ProductEffects])
   ],
   providers: [
     ProductService,
     CartService,
-    NotificationService
+    NotificationService,
+    UtilsService,
+    {
+      provide: DOMAIN,
+      useValue: environment.domain,
+    },
+    CartActions,
+    ProductActions
   ],
   bootstrap: [AppComponent]
 })

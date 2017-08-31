@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Http, Response} from '@angular/http';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
+import { DOMAIN } from '../../config';
 
 @Injectable()
 export class ProductService {
@@ -14,9 +15,9 @@ export class ProductService {
     return this._http.get(`assets/products.json`).map((res: Response) => res.json());
   }
 
-  public getProduct(id: number): Observable<Product> {
+  public getProduct(id: string): Observable<Product> {
     return this.getProducts().map((products: Product[]) => {
-      return products[id]
-    })
+      return products[id];
+    });
   }
 }
