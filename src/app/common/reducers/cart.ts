@@ -48,7 +48,7 @@ export function cartReducer(products: Product[] = initialState, action: {type: s
         products.splice(itemIndex, 1, updatedItem);
         return [...products];
       }
-      return [...products, ...(action as any).payload];
+      return [...products, ...{...(action as any).payload, amount: 1}];
     }
 
     case CartActions.DELETE_ITEM: {

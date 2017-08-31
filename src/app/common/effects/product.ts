@@ -24,6 +24,13 @@ export class ProductEffects {
     .switchMap((id: string) => this._productService.getProduct(id))
     .map((product: Product) => this._productActions.getProductSuccess(product));
 
+  @Effect()
+  public addProduct$: Observable<Action> = this.actions$
+    .ofType(ProductActions.ADD_PRODUCT)
+    .map((action: Action) => (action as any).payload)
+    .switchMap((product: Product) => this._productService.addProduct(product))
+    .map((product: Product) => this._productActions.addProductSuccess(product));
+
   public constructor(
     private actions$: Actions,
     private _productActions: ProductActions,

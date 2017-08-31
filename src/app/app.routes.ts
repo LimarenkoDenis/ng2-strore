@@ -10,5 +10,9 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent},
   { path: 'form', component: FormDetailsComponent},
+  {
+    path: 'admin/product-create',
+    loadChildren: 'app/admin/admin.module#AdminModule'
+  },
   { path: '**', redirectTo: 'products' }
 ];

@@ -37,4 +37,21 @@ export class ProductActions {
     };
   }
 
+  // tslint:disable-next-line
+  public static ADD_PRODUCT = '[Product] Add Product';
+  public addProduct(product: Product) {
+    return {
+      type: ProductActions.ADD_PRODUCT,
+      payload: product
+    };
+  }
+
+  // tslint:disable-next-line
+  public static ADD_PRODUCT_SUCCESS = '[Product] Add Product Success';
+  public addProductSuccess(product: Product) {
+    return {
+      type: ProductActions.ADD_PRODUCT_SUCCESS,
+      payload: product
+    };
+  }
 }

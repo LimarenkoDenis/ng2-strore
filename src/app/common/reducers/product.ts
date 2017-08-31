@@ -16,6 +16,10 @@ export function productReducer(state: Product[] = initialState, action: Action):
       return (action as any).payload;
     }
 
+    case ProductActions.ADD_PRODUCT_SUCCESS: {
+      return [...state, (action as any).payload];
+    }
+
     default:
       return state;
   }

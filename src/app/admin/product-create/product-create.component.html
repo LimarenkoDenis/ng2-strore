@@ -1,0 +1,43 @@
+<md-card>
+  <form (ngSubmit)="submit(product.value)" [formGroup]="product">
+    <h2>Create new product</h2>
+    <div fxLayout='column' fxLayoutAlign='center' class="form-group">
+
+      <md-input-container>
+        <input mdInput type="text" placeholder="title" #title formControlName="title" >
+        <md-hint align="end" *ngIf="product.controls['title'].errors && product.controls['title'].touched">
+          You can't leave this empty.
+        </md-hint>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput type="text" placeholder="description" #description formControlName="description" >
+        <md-hint align="end" *ngIf="product.controls['description'].errors && product.controls['description'].touched">
+          You can't leave this empty.
+        </md-hint>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput type="text" placeholder="price" #price formControlName="price" >
+        <md-hint align="end" *ngIf="product.controls['price'].errors && product.controls['price'].touched">
+          You can't leave this empty.
+        </md-hint>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput type="text" placeholder="photo" #photo formControlName="photo" >
+        <md-hint align="end" *ngIf="product.controls['photo'].errors && product.controls['photo'].touched">
+          You can't leave this empty.
+        </md-hint>
+      </md-input-container>
+
+      <md-select placeholder="type" formControlName="type">
+        <md-option *ngFor="let type of types" [value]="type.value">
+          {{type.value}}
+        </md-option>
+      </md-select>
+
+    </div>
+    <button md-button [disabled]="product.invalid">Ok</button>
+  </form>
+</md-card>
