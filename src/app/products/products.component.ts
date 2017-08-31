@@ -1,6 +1,7 @@
-import { CartService } from './../shared/services/cart.service';
-import { ProductService } from './../shared/services/product.service';
+import { ProductActions } from './../common/actions/product';
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-products',
@@ -10,23 +11,25 @@ import { Component, OnInit } from '@angular/core';
 
 export class ProductsComponent implements OnInit {
 
-  public products: Product[] = [];
+  public products: Observable<Product[]>;
 
   public constructor(
-    private _productService: ProductService,
-    private _cartService: CartService
-  ) {}
+    private _store: Store<any>,
+    private _productActions: ProductActions,
+  ) {
+    this.products = _store.select('product');
+  }
 
   public ngOnInit(): void {
-    this.getProduct();
+    this._store.dispatch(this._productActions.loadProducts());
   }
 
-  public getProduct(): void {
-    this._productService.getProducts().subscribe((products: Product[]) => this.products = products);
-  }
+  // public getProduct(): void {
+  //   this._productService.getProducts().subscribe((products: Product[]) => this.products = products);
+  // }
 
-  public addProduct(product: Product): void {
-    this._cartService.Item = {product, action: 'add' };
-  }
+  // public addProduct(product: Product): void {
+  //   this._cartService.Item = {product, action: 'add' };
+  // }
 
 }

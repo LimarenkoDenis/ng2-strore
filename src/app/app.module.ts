@@ -25,6 +25,14 @@ import { SortPipe } from './shared/pipes/sort.pipe';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { CategoryPipe } from './shared/pipes/category.pipe';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { reducers } from './common/reducers';
+import { ProductEffects } from './common/effects/product';
+import { CartActions } from './common/actions/cart';
+import { ProductActions } from './common/actions/product';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +52,14 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    StoreModule.forRoot(reducers, {
+      initialState: {
+        auth: {
+          loggedIn: true
+        }
+      }
+    }),
+    EffectsModule.forRoot([ProductEffects])
   ],
   providers: [
     ProductService,
@@ -52,7 +68,9 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
     {
       provide: DOMAIN,
       useValue: environment.domain,
-    }
+    },
+    CartActions,
+    ProductActions
   ],
   bootstrap: [AppComponent]
 })

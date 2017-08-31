@@ -2,9 +2,9 @@
   <input mdInput placeholder="Search" #search>
 </md-input-container>
 <md-tab-group md-dynamic-height md-border-bottom md-autoselect>
-  <md-tab *ngFor="let tab of products | category" label="{{tab}}">
+  <md-tab *ngFor="let tab of products | async | category" label="{{tab}}">
     <md-grid-list cols="3">
-      <md-grid-tile rowspan="1" colspan="1" *ngFor="let  product of products | sort: tab | search: search.value">
+      <md-grid-tile rowspan="1" colspan="1" *ngFor="let  product of products | async ">
         <md-grid-tile-header>{{product.title}}</md-grid-tile-header>
         <img class="img"  md-card-image [src]="product.photo">
         <md-grid-tile-footer  fxLayout="row" fxLayoutAlign="space-between center">
