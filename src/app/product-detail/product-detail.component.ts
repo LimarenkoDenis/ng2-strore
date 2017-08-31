@@ -1,8 +1,8 @@
-import { NotificationService } from './../shared/services/notifications.service';
+import { CartActions } from './../common/actions/cart';
+import { Store } from '@ngrx/store';
 import { ProductService } from './../shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CartService } from './../shared/services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -16,8 +16,8 @@ export class ProductDetailComponent implements OnInit {
   public constructor(
     private route: ActivatedRoute,
     private _productService: ProductService,
-    private _cartService: CartService,
-    private _notificationsService: NotificationService,
+    private _store: Store<any>,
+    private _cartActions: CartActions
   ) { }
 
   public ngOnInit(): void {
@@ -29,7 +29,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   public addProduct(product: Product): void {
-    this._cartService.Item = {product, action: 'add' };
-    this._notificationsService.successNotification();
+    this._store.dispatch(this._cartActions.addToCart(product));
   }
 }

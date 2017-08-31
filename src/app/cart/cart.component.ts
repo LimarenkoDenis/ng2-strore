@@ -1,5 +1,7 @@
-import { CartService } from './../shared/services/cart.service';
+import { CartActions } from './../common/actions/cart';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cart',
@@ -10,29 +12,30 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
 
   public sum: number = 0;
-  public cart: Product[] = [];
+  public cart: Observable<Product[]>;
 
   public constructor(
-    private _cartService: CartService
-  ) { }
+    private _store: Store<any>,
+    private _cartActions: CartActions,
+  ) {
+    this.cart = _store.select('cart');
+  }
 
   public ngOnInit(): void {
-    this._cartService.getCart().subscribe((cart:Product[]) => {
-      this.cart = cart;
-      this.calculateTotal(cart);
-    })
+    this._store.dispatch(this._cartActions.loadCartItems());
+    this._store.select('cart').subscribe((cart: Product[]) => this.calculateTotal(cart));
   }
 
   public removeItem(product: Product): void {
-    this._cartService.Item = { product, action: 'remove'};
+    this._store.dispatch(this._cartActions.deleteItem(product));
   }
 
   public reduceItem(product: Product): void {
-    this._cartService.Item = { product, action: 'reduce'};
+    this._store.dispatch(this._cartActions.reduceItem(product));
   }
 
   public increaseItem(product: Product): void {
-    this._cartService.Item = { product, action: 'increase'};
+    this._store.dispatch(this._cartActions.increaseItem(product));
   }
 
   private calculateTotal(cart: Product[]): void {

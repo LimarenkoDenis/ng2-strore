@@ -4,21 +4,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import  { routes } from './app.routes';
+import { routes } from './app.routes';
+
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {SimpleNotificationsModule} from 'angular2-notifications';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FormDetailsComponent } from './form-details/form-details.component';
 import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { SummaryComponent } from './summary/summary.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { ProductService } from './shared/services/product.service';
-import { CartService } from './shared/services/cart.service';
 import { NotificationService } from './shared/services/notifications.service';
 import { UtilsService } from './shared/services/utils.service';
 
@@ -28,8 +30,6 @@ import { DOMAIN } from './config';
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { CategoryPipe } from './shared/pipes/category.pipe';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { FooterComponent } from './footer/footer.component';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -73,7 +73,6 @@ import { ProductActions } from './common/actions/product';
   ],
   providers: [
     ProductService,
-    CartService,
     NotificationService,
     UtilsService,
     {

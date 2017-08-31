@@ -4,6 +4,6 @@ type Product =  {
   description: string,
   photo: string,
   price: number,
-  amount: number,
+  amount?: number,
   type: string
 }

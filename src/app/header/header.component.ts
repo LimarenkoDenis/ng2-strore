@@ -1,5 +1,6 @@
-import { CartService } from './../shared/services/cart.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +12,10 @@ export class HeaderComponent implements OnInit {
   public amount: number = 0;
 
   public constructor(
-    private _cartService: CartService
+    private _store: Store<any>,
   ) {}
 
   public ngOnInit(): void {
-    this._cartService.getItems.subscribe((cart: Product[]) => {
-      console.log(cart);
-      this.amount = cart.length;
-    });
+    this._store.select('cart').subscribe((product: Product[]) => this.amount = product.length);
   }
 }

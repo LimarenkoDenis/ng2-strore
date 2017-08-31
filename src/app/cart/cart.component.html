@@ -1,5 +1,5 @@
 <div *ngIf="cart">
-  <md-card *ngFor="let item of cart" fxLayout="row">
+  <md-card *ngFor="let item of cart | async" fxLayout="row">
     <md-card-title fxFlex="60">{{item.title}}</md-card-title>
     <a fxFlex="5" (click)="reduceItem(item)"><i class="fa fa-minus" aria-hidden="true"></i></a>
     <md-card-title fxFlex="5">{{item.amount}}</md-card-title>

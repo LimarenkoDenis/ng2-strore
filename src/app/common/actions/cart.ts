@@ -37,4 +37,39 @@ export class CartActions {
     };
   }
 
+  // tslint:disable-next-line
+  public static ADD_TO_CART = '[Cart] Add Product To Cart';
+  public addToCart(product: Product) {
+    return {
+      type: CartActions.ADD_TO_CART,
+      payload: product
+    };
+  }
+
+  // tslint:disable-next-line
+  public static DELETE_ITEM = '[Cart] Delete Item';
+  public deleteItem(product: Product) {
+    return {
+      type: CartActions.DELETE_ITEM,
+      payload: product
+    };
+  }
+
+  // tslint:disable-next-line
+  public static REDUCE_ITEM = '[Cart] Reduce Item';
+  public reduceItem(product: Product) {
+    return {
+      type: CartActions.REDUCE_ITEM,
+      payload: product
+    };
+  }
+
+  // tslint:disable-next-line
+  public static INCREASE_ITEM = '[Cart] Increase Item';
+  public increaseItem(product: Product) {
+    return {
+      type: CartActions.INCREASE_ITEM,
+      payload: product
+    };
+  }
 }
