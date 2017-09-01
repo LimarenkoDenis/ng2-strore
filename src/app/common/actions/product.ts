@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import { MdSnackBar } from '@angular/material';
+
+// TODO: invastigate where i can send notification
 
 @Injectable()
 export class ProductActions {
+  public constructor(private _mdSnackBar: MdSnackBar) {}
+
+  // tslint:disable-next-line
   public static LOAD_PRODUCTS: string = '[Product] Load Products';
   public loadProducts(): Action {
     return {
@@ -13,6 +19,7 @@ export class ProductActions {
   // tslint:disable-next-line
   public static LOAD_PRODUCTS_SUCCESS = '[Product] Load Products Success';
   public loadProductsSuccess(products: Product[]) {
+    this._mdSnackBar.open('Products were loaded', '', {duration: 3000});
     return {
       type: ProductActions.LOAD_PRODUCTS_SUCCESS,
       payload: products
@@ -49,6 +56,7 @@ export class ProductActions {
   // tslint:disable-next-line
   public static ADD_PRODUCT_SUCCESS = '[Product] Add Product Success';
   public addProductSuccess(product: Product) {
+    this._mdSnackBar.open('Products were loaded', '', {duration: 3000});
     return {
       type: ProductActions.ADD_PRODUCT_SUCCESS,
       payload: product

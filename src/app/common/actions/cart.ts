@@ -1,8 +1,12 @@
+import { MdSnackBar } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
 @Injectable()
 export class CartActions {
+  public constructor (private _mdSnackBar: MdSnackBar) {}
+
+  // tslint:disable-next-line
   public static LOAD_CART_ITEMS: string = '[Cart] Load Cart Items';
   public loadCartItems(): Action {
     return {
@@ -40,6 +44,7 @@ export class CartActions {
   // tslint:disable-next-line
   public static ADD_TO_CART = '[Cart] Add Product To Cart';
   public addToCart(product: Product) {
+    this._mdSnackBar.open('+1', 'x', {duration: 2000});
     return {
       type: CartActions.ADD_TO_CART,
       payload: product
@@ -49,6 +54,7 @@ export class CartActions {
   // tslint:disable-next-line
   public static DELETE_ITEM = '[Cart] Delete Item';
   public deleteItem(product: Product) {
+    this._mdSnackBar.open('Item was deleted from cart', 'x', {duration: 2000});
     return {
       type: CartActions.DELETE_ITEM,
       payload: product

@@ -9,7 +9,6 @@ import { routes } from './app.routes';
 
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SimpleNotificationsModule } from 'angular2-notifications';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -22,7 +21,6 @@ import { SummaryComponent } from './summary/summary.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { ProductService } from './shared/services/product.service';
-import { NotificationService } from './shared/services/notifications.service';
 import { UtilsService } from './shared/services/utils.service';
 
 import { environment } from '../environments/environment';
@@ -64,7 +62,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     HttpModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    SimpleNotificationsModule.forRoot(),
     MaterialModule,
     FlexLayoutModule,
     StoreModule.forRoot(reducers, {
@@ -82,7 +79,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   ],
   providers: [
     ProductService,
-    NotificationService,
     UtilsService,
     {
       provide: DOMAIN,

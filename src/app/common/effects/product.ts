@@ -1,3 +1,4 @@
+import { MdSnackBar } from '@angular/material';
 import { ProductService } from './../../shared/services/product.service';
 import { ProductActions } from './../actions/product';
 import { Injectable } from '@angular/core';
@@ -34,7 +35,8 @@ export class ProductEffects {
   public constructor(
     private actions$: Actions,
     private _productActions: ProductActions,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _mdSnackBar: MdSnackBar
   ) {}
 }
 
