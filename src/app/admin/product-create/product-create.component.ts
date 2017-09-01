@@ -32,8 +32,7 @@ export class ProductCreateComponent implements OnInit {
     });
   }
 
-  public submit(product: Product) {
+  public submit(product: Product): void {
     this._store.dispatch(this._productActions.addProduct(product));
-
   }
 }

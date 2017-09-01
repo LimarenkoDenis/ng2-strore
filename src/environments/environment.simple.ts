@@ -7,11 +7,11 @@ export const environment = {
   production: false,
   domain: '',
   firebase: {
-    apiKey: 'AIzaSyBRZUbSWiocFly2RcEMp8ezFszk4RtT3ss',
-    authDomain: 'ngx-store-1b953.firebaseapp.com',
-    databaseURL: 'https://ngx-store-1b953.firebaseio.com',
-    projectId: 'ngx-store-1b953',
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
     storageBucket: '',
-    messagingSenderId: '49682187492'
+    messagingSenderId: ''
   }
 };

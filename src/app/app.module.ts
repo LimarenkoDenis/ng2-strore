@@ -40,6 +40,10 @@ import { ProductEffects } from './common/effects/product';
 import { CartActions } from './common/actions/cart';
 import { ProductActions } from './common/actions/product';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +75,10 @@ import { ProductActions } from './common/actions/product';
       }
     }),
     EffectsModule.forRoot([ProductEffects]),
-    AdminModule
+    AdminModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [
     ProductService,

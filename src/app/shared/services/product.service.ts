@@ -1,37 +1,38 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Http, Response, Headers} from '@angular/http';
-import 'rxjs/add/operator/map';
-import { DOMAIN } from '../../config';
+import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/operator/map';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class ProductService {
 
   public constructor(
-    private _http: Http
+    private _db: AngularFireDatabase
   ) { }
 
   public getProducts(): Observable<Product[]> {
-    return this._http.get(`http://localhost:3000/products`).map((res: Response) => res.json());
+    return this._db.list('/products')
+    .catch(() => {
+      // tslint:disable-next-line
+      console.log(`Can't load produvts`);
+      return Observable.of([]);
+    });
   }
 
   public getProduct(id: string): Observable<Product> {
-    return this.getProducts().map((products: Product[]) => {
-      return products[id];
+    return this._db.object(`/products/${id}`)
+    .catch(() => {
+      // tslint:disable-next-line
+      console.log(`Can't load products`);
+      return Observable.of([]);
     });
   }
 
   public addProduct(product: Product): Observable<Product> {
-    // return Observable.of(product);
-    // const headers = new Headers({
-    //   'Content-Type': 'application/json'
-    // });
-    const productJson: string = JSON.stringify(product);
-    return this._http.post(`http://localhost:3000/products`, product)
-    .map((res: Response) => {
-      console.log(res);
-
-      return res.json()
+    return this._db.list(`/products`).push(product)
+    .catch(() => {
+      // tslint:disable-next-line
+      console.log(`Can't add produvts`);
     });
   }
 }

@@ -14,7 +14,8 @@
     "module": "es2015",
     "baseUrl": "",
     "types": [
-      "types"
+      "types",
+      "firebase"
     ]
   },
   "exclude": [
