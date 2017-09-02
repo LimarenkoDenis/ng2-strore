@@ -1,8 +1,17 @@
 <div fxLayout="column" class="wrapper">
-  <app-header></app-header>
+  <app-header [menuActive$]="menuActive$"></app-header>
   <div fxLayout='row' fxLayoutAlign="space-between" class="content">
     <div fxFlex="100">
-      <router-outlet></router-outlet>
+      <md-sidenav-container>
+        <md-sidenav mode="over" opened="{{menuActive$ | async}}">
+          <md-list>
+            <md-list-item>Mani page</md-list-item>
+            <md-list-item>About us</md-list-item>
+            <md-list-item>Contacts</md-list-item>
+          </md-list>
+        </md-sidenav>
+        <router-outlet></router-outlet>
+      </md-sidenav-container>
     </div>
   </div>
   <app-footer></app-footer>

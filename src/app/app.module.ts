@@ -37,6 +37,7 @@ import { reducers } from './common/reducers';
 import { ProductEffects } from './common/effects/product';
 import { CartActions } from './common/actions/cart';
 import { ProductActions } from './common/actions/product';
+import { MenuActions } from './common/actions/menu';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -75,7 +76,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AdminModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   providers: [
     ProductService,
@@ -85,7 +86,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
       useValue: environment.domain,
     },
     CartActions,
-    ProductActions
+    ProductActions,
+    MenuActions
   ],
   bootstrap: [AppComponent]
 })

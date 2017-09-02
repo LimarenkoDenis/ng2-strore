@@ -11,7 +11,8 @@ import { MaterialModule } from '@angular/material';
     MaterialModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: '', component: ProductCreateComponent}
+      { path: '', redirectTo: 'product-create', pathMatch: 'full'},
+      { path: 'product-create', component: ProductCreateComponent}
     ])
   ],
   declarations: [
