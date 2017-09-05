@@ -1,4 +1,4 @@
-import { CartActions } from './../common/actions/cart';
+import * as CartActions from './../common/actions/cart';
 import { Store } from '@ngrx/store';
 import { ProductService } from './../shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,7 +17,6 @@ export class ProductDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private _productService: ProductService,
     private _store: Store<any>,
-    private _cartActions: CartActions
   ) { }
 
   public ngOnInit(): void {
@@ -29,6 +28,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   public addProduct(product: Product): void {
-    this._store.dispatch(this._cartActions.addToCart(product));
+    this._store.dispatch(new CartActions.AddToCart(product));
   }
 }
