@@ -21,14 +21,14 @@ export class ProductEffects {
   @Effect()
   public getProduct$: Observable<Action> = this.actions$
     .ofType(ProductActions.GET_PRODUCT)
-    .map((action: Action) => (action as any).payload)
+    .map((action: any) => action.payload)
     .switchMap((id: string) => this._productService.getProduct(id))
     .map((product: Product) => this._productActions.getProductSuccess(product));
 
   @Effect()
   public addProduct$: Observable<Action> = this.actions$
     .ofType(ProductActions.ADD_PRODUCT)
-    .map((action: Action) => (action as any).payload)
+    .map((action: any) => action.payload)
     .switchMap((product: Product) => this._productService.addProduct(product))
     .map((product: Product) => this._productActions.addProductSuccess(product));
 
