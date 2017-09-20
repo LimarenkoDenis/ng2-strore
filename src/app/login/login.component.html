@@ -1,0 +1,21 @@
+<md-card>
+  <form (ngSubmit)="login(auth.value)" [formGroup]="auth">
+    <h2>Login</h2>
+    <div fxLayout='column' class="form-group">
+      <md-input-container>
+        <input mdInput type="email" placeholder="Email" #email formControlName="email" >
+        <md-hint align="end" *ngIf="auth.controls['email'].errors && auth.controls['email'].touched">
+          You can't leave this empty.
+        </md-hint>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput type="password" placeholder="Password" #name formControlName="password">
+        <md-hint align="end" *ngIf="auth.controls['password'].hasError('required') && auth.controls['password'].touched">
+          You can't leave this empty.
+        </md-hint>
+      </md-input-container>
+    </div>
+    <div>{{message}}</div>
+    <button md-button [disabled]="auth.invalid">Login</button>
+  </form>
+</md-card>

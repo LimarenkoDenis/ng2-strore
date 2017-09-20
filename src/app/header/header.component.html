@@ -10,5 +10,20 @@
     <md-icon><i class="fa fa-star" aria-hidden="true"></i></md-icon>
   </div>
   <div fxFlex></div>
+
+  <button md-raised-button color="danger" *ngIf="user" [routerLink]="['/product-create']">
+    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+  </button>
+
+  <span>{{user?.email}}</span>
+
+  <button md-raised-button color="accent" *ngIf="user" (click)="logout()">
+    Logout
+  </button>
+
+  <button md-raised-button color="danger" *ngIf="!user" [routerLink]="['/login']">
+    <i class="fa fa-user" aria-hidden="true"></i>Login
+  </button>
+
   <span [routerLink]="['/cart']"><i class="fa fa-shopping-basket" aria-hidden="true"></i> {{amount}}</span>
 </md-toolbar>

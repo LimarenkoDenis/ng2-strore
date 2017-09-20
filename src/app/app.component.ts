@@ -33,9 +33,7 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._utilsService.onMessage().subscribe((msg: string) => {
-      this._showMessageBar(msg);
-    });
+
   }
 
   public toogleMenu(): void {

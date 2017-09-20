@@ -1,3 +1,6 @@
+import { ProductCreateComponent } from './product-create/product-create.component';
+import { AuthGuardService } from './shared/services/auth-guard.service';
+import { LoginComponent } from './login/login.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
 import { FormDetailsComponent } from './form-details/form-details.component';
@@ -11,8 +14,13 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent},
   { path: 'form', component: FormDetailsComponent},
   {
-    path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule'
+    path: 'product-create',
+    component: ProductCreateComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   { path: '**', redirectTo: 'products' }
 ];

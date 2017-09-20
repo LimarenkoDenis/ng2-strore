@@ -1,4 +1,4 @@
-import { ProductActions } from './../../common/actions/product';
+import { ProductActions } from '../common/actions/product';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';

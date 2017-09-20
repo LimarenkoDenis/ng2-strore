@@ -1,4 +1,3 @@
-import { AdminModule } from './admin/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,10 +17,14 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { SummaryComponent } from './summary/summary.component';
+import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
 
 import { ProductService } from './shared/services/product.service';
 import { UtilsService } from './shared/services/utils.service';
+import { LoginService } from './shared/services/login.service';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 
 import { environment } from '../environments/environment';
 import { DOMAIN } from './config';
@@ -32,12 +35,17 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers } from './common/reducers';
+
 import { ProductEffects } from './common/effects/product';
+import { AuthEffects } from './common/effects/auth';
+
 import { CartActions } from './common/actions/cart';
 import { ProductActions } from './common/actions/product';
 import { MenuActions } from './common/actions/menu';
+import { AuthActions } from './common/actions/auth';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -55,7 +63,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     CartComponent,
     CategoryPipe,
     ProductDetailComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    ProductCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -72,8 +82,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
         }
       }
     }),
-    EffectsModule.forRoot([ProductEffects]),
-    AdminModule,
+    EffectsModule.forRoot([ProductEffects, AuthEffects]),
+    // StoreDevtoolsModule.instrumentStore({
+    //   maxAge: 25
+    // }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -87,7 +99,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     },
     CartActions,
     ProductActions,
-    MenuActions
+    MenuActions,
+    AuthActions,
+    AuthGuardService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

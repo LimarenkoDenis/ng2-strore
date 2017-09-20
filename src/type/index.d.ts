@@ -7,3 +7,8 @@ type Product =  {
   amount?: number,
   type: string
 }
+
+type User = {
+  email?: string,
+  password?: string
+}
