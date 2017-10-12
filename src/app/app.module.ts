@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 
-import { MaterialModule } from '@angular/material';
+import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 

@@ -1,4 +1,4 @@
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { ProductService } from './../../shared/services/product.service';
 import * as ProductActions from './../actions/product';
 import { Injectable } from '@angular/core';
@@ -20,7 +20,7 @@ export class ProductEffects {
     .ofType(ProductActions.LOAD_PRODUCTS)
     .switchMap(() => this._productService.getProducts())
     .map((products: Product[]) => new ProductActions.LoadProductsSuccess(products))
-    .do(() => this._mdSnackBar.open('Products were loaded', '', {duration: 3000}));
+    .do(() => this._matSnackBar.open('Products were loaded', '', {duration: 3000}));
 
 
   @Effect()
@@ -29,7 +29,7 @@ export class ProductEffects {
     .map((action: any) => action.payload)
     .switchMap((id: string) => this._productService.getProduct(id))
     .map((product: Product) => new ProductActions.GetProductSuccess(product))
-    .do(() => this._mdSnackBar.open('Product were loaded', '', {duration: 3000}));
+    .do(() => this._matSnackBar.open('Product were loaded', '', {duration: 3000}));
 
   @Effect()
   public addProduct$: Observable<Action> = this.actions$
@@ -37,12 +37,12 @@ export class ProductEffects {
     .map((action: any) => action.payload)
     .switchMap((product: Product) => this._productService.addProduct(product))
     .map((product: Product) => new ProductActions.AddProductSuccess(product))
-    .do(() => this._mdSnackBar.open('Products were loaded', '', {duration: 3000}));
+    .do(() => this._matSnackBar.open('Products were loaded', '', {duration: 3000}));
 
   public constructor(
     private actions$: Actions,
     private _productService: ProductService,
-    private _mdSnackBar: MdSnackBar
+    private _matSnackBar: MatSnackBar
   ) {}
 }
 

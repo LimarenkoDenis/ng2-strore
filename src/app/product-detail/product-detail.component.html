@@ -1,11 +1,11 @@
-<md-card fxLayout="column" *ngIf="product" fxLayoutAlign="center center" class="detail">
-  <md-grid-tile-header>
-    <md-card-title>{{product.title}}</md-card-title>
-    <md-card-subtitle>{{product.price}} $</md-card-subtitle>
-    <md-card-subtitle>{{product.description}}</md-card-subtitle>
-  </md-grid-tile-header>
-  <img class="img" md-card-image [src]="product.photo">
-  <md-grid-tile-footer>
-    <button md-raised-button color="accent" (click)="addProduct(product)">BUY</button>
-  </md-grid-tile-footer>
-</md-card>
+<mat-card fxLayout="column" *ngIf="product" fxLayoutAlign="center center" class="detail">
+  <mat-grid-tile-header>
+    <mat-card-title>{{product.title}}</mat-card-title>
+    <mat-card-subtitle>{{product.price}} $</mat-card-subtitle>
+    <mat-card-subtitle>{{product.description}}</mat-card-subtitle>
+  </mat-grid-tile-header>
+  <img class="img" mat-card-image [src]="product.photo">
+  <mat-grid-tile-footer>
+    <button mat-raised-button color="accent" (click)="addProduct(product)">BUY</button>
+  </mat-grid-tile-footer>
+</mat-card>
