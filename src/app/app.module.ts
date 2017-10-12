@@ -11,18 +11,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FormDetailsComponent } from './form-details/form-details.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { CartComponent } from './cart/cart.component';
-import { SummaryComponent } from './summary/summary.component';
-import { LoginComponent } from './login/login.component';
-import { FooterComponent } from './footer/footer.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
+import { CartComponent } from './cart/cart.component';
+import { LoginComponent } from './login/login.component';
+import { FormDetailsComponent } from './form-details/form-details.component';
 
 import { ProductService } from './shared/services/product.service';
-import { UtilsService } from './shared/services/utils.service';
 import { LoginService } from './shared/services/login.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 
@@ -42,11 +40,6 @@ import { reducers } from './common/reducers';
 import { ProductEffects } from './common/effects/product';
 import { AuthEffects } from './common/effects/auth';
 
-import { CartActions } from './common/actions/cart';
-import { ProductActions } from './common/actions/product';
-import { MenuActions } from './common/actions/menu';
-import { AuthActions } from './common/actions/auth';
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -57,7 +50,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     HeaderComponent,
     SortPipe,
     FormDetailsComponent,
-    SummaryComponent,
     SearchPipe,
     ProductsComponent,
     CartComponent,
@@ -92,15 +84,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   ],
   providers: [
     ProductService,
-    UtilsService,
     {
       provide: DOMAIN,
       useValue: environment.domain,
     },
-    CartActions,
-    ProductActions,
-    MenuActions,
-    AuthActions,
     AuthGuardService,
     LoginService
   ],

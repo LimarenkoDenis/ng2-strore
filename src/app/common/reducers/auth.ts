@@ -1,4 +1,4 @@
-import { AuthActions } from './../actions/auth';
+import * as AuthActions from './../actions/auth';
 import { Action, ActionReducer } from '@ngrx/store';
 
 export function authReducer(state: User = {}, action: any) {
@@ -8,8 +8,6 @@ export function authReducer(state: User = {}, action: any) {
     }
 
     case AuthActions.LOGIN_FAIL: {
-console.log({...action.payload});
-
       return {...action.payload};
     }
 

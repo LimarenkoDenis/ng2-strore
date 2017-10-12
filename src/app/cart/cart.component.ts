@@ -1,4 +1,4 @@
-import { CartActions } from './../common/actions/cart';
+import * as CartActions from './../common/actions/cart';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -15,27 +15,26 @@ export class CartComponent implements OnInit {
   public cart: Observable<Product[]>;
 
   public constructor(
-    private _store: Store<any>,
-    private _cartActions: CartActions,
+    private _store: Store<any>
   ) {
     this.cart = _store.select('cart');
   }
 
   public ngOnInit(): void {
-    this._store.dispatch(this._cartActions.loadCartItems());
+    this._store.dispatch(new CartActions.LoadCartItems());
     this._store.select('cart').subscribe((cart: Product[]) => this.calculateTotal(cart));
   }
 
   public removeItem(product: Product): void {
-    this._store.dispatch(this._cartActions.deleteItem(product));
+    this._store.dispatch(new CartActions.DeleteItem(product));
   }
 
   public reduceItem(product: Product): void {
-    this._store.dispatch(this._cartActions.reduceItem(product));
+    this._store.dispatch(new CartActions.ReduceItem(product));
   }
 
   public increaseItem(product: Product): void {
-    this._store.dispatch(this._cartActions.increaseItem(product));
+    this._store.dispatch(new CartActions.IncreaseItem(product));
   }
 
   private calculateTotal(cart: Product[]): void {

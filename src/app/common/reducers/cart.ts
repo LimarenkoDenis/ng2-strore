@@ -1,4 +1,4 @@
-import { CartActions } from './../actions/cart';
+import * as CartActions from './../actions/cart';
 import { Action, ActionReducer } from '@ngrx/store';
 
 const initialState: Product[] = [];

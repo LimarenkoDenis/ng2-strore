@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
@@ -16,8 +17,6 @@ export class AuthGuardService implements CanActivate {
     return this.afAuth.authState
       .take(1)
       .switchMap((user: firebase.User) => {
-        console.log(user);
-
         if (!user) {
           this._router.navigate(['/login']);
           return Observable.of(false);

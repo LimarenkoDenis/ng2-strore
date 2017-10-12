@@ -1,4 +1,4 @@
-import { AuthActions } from './../common/actions/auth';
+import * as AuthActions from './../common/actions/auth';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,8 +15,7 @@ export class LoginComponent implements OnInit {
 
   public constructor(
     private _fb: FormBuilder,
-    private _store: Store<any>,
-    private _authActions: AuthActions,
+    private _store: Store<any>
   ) {
     this.auth = this._fb.group({
       email: ['', Validators.required],
@@ -31,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   public login(user: User): void {
-    this._store.dispatch(this._authActions.login(user));
+    this._store.dispatch(new AuthActions.Login(user));
   }
 }
 

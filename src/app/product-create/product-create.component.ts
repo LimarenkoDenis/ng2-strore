@@ -1,4 +1,4 @@
-import { ProductActions } from '../common/actions/product';
+import * as ProductActions from '../common/actions/product';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,8 +18,7 @@ export class ProductCreateComponent implements OnInit {
   ];
   public constructor(
     private _fb: FormBuilder,
-    private _store: Store<any>,
-    private _productActions: ProductActions
+    private _store: Store<any>
   ) { }
 
   public ngOnInit(): void {
@@ -33,6 +32,6 @@ export class ProductCreateComponent implements OnInit {
   }
 
   public submit(product: Product): void {
-    this._store.dispatch(this._productActions.addProduct(product));
+    this._store.dispatch(new ProductActions.AddProduct(product));
   }
 }

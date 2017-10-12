@@ -1,59 +1,52 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
-@Injectable()
-export class AuthActions {
-  public constructor() {}
+export const LOGIN: string = '[Login] Login ..';
+export const LOGIN_SUCCESS: string = '[Login] login Success';
+export const LOGIN_FAIL: string = '[Login] login Fail';
+export const LOGOUT: string = '[Logout] Logout ..';
+export const LOGOUT_SUCCESS: string = '[Login] Logout Success';
+export const LOGIOUT_FAIL: string = '[Login] Logout Fail';
 
-  // tslint:disable-next-line
-  public static LOGIN: string = '[Login] Login ..';
-  public login(user: User) {
-    return {
-      type: AuthActions.LOGIN,
-      payload: user
-    };
-  }
-
-  // tslint:disable-next-line
-  public static LOGIN_SUCCESS = '[Login] login Success';
-  public loginSuccess(user: User) {
-    return {
-      type: AuthActions.LOGIN_SUCCESS,
-      payload: user
-    };
-  }
-
-  // tslint:disable-next-line
-  public static LOGIN_FAIL = '[Login] login Fail';
-  public loginFail(err: Error) {
-    return {
-      type: AuthActions.LOGIN_FAIL,
-      payload: err
-    };
-  }
-
-  // tslint:disable-next-line
-  public static LOGOUT = '[Logout] Logout ..';
-  public logout() {
-    return {
-      type: AuthActions.LOGOUT,
-    };
-  }
-
-  // tslint:disable-next-line
-  public static LOGOUT_SUCCESS = '[Login] Logout Success';
-  public logoutSuccess() {
-    return {
-      type: AuthActions.LOGOUT_SUCCESS,
-    };
-  }
-
-  // tslint:disable-next-line
-  public static LOGIOUT_FAIL = '[Login] Logout Fail';
-  public logoutFail() {
-    return {
-      type: AuthActions.LOGIOUT_FAIL,
-    };
-  }
-
+export class Login implements Action {
+  public readonly type: string = LOGIN;
+  public constructor(public payload: User) { }
 }
+
+// tslint:disable-next-line
+export class LoginSuccess implements Action {
+  public readonly type: string = LOGIN_SUCCESS;
+  public constructor(public payload: User) { }
+}
+
+// tslint:disable-next-line
+export class LoginFail implements Action {
+  public readonly type: string = LOGIN_FAIL;
+  public constructor(public payload: Error) { }
+}
+
+// tslint:disable-next-line
+export class Logout implements Action {
+  public readonly type: string = LOGOUT;
+  // public constructor() { }
+}
+
+// tslint:disable-next-line
+export class LogoutSuccess implements Action {
+  public readonly type: string = LOGOUT_SUCCESS;
+  public constructor() { }
+}
+
+// tslint:disable-next-line
+export class LogoutFail implements Action {
+  public readonly type: string = LOGIOUT_FAIL;
+  public constructor() { }
+}
+
+export type Actions
+  = Login
+  | LoginSuccess
+  | LoginFail
+  | Logout
+  | LogoutSuccess
+  | LogoutFail;
+

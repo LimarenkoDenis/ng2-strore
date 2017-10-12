@@ -1,65 +1,51 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { MdSnackBar } from '@angular/material';
 
-// TODO: invastigate where i can send notification
+export const LOAD_PRODUCTS: string = '[Product] Load Products';
+export const LOAD_PRODUCTS_SUCCESS: string = '[Product] Load Products Success';
+export const GET_PRODUCT: string = '[Product] Get Product';
+export const GET_PRODUCT_SUCCESS: string = '[Product] Get Product Success';
+export const ADD_PRODUCT: string = '[Product] Add Product';
+export const ADD_PRODUCT_SUCCESS: string = '[Product] Add Product Success';
 
-@Injectable()
-export class ProductActions {
-  public constructor(private _mdSnackBar: MdSnackBar) {}
-
-  // tslint:disable-next-line
-  public static LOAD_PRODUCTS: string = '[Product] Load Products';
-  public loadProducts(): Action {
-    return {
-      type: ProductActions.LOAD_PRODUCTS
-    };
-  }
-
-  // tslint:disable-next-line
-  public static LOAD_PRODUCTS_SUCCESS = '[Product] Load Products Success';
-  public loadProductsSuccess(products: Product[]) {
-    this._mdSnackBar.open('Products were loaded', '', {duration: 3000});
-    return {
-      type: ProductActions.LOAD_PRODUCTS_SUCCESS,
-      payload: products
-    };
-  }
-
-  // tslint:disable-next-line
-  public static GET_PRODUCT = '[Product] Get Product';
-  public getProduct(id: string) {
-    return {
-      type: ProductActions.GET_PRODUCT,
-      payload: id
-    };
-  }
-
-  // tslint:disable-next-line
-  public static GET_PRODUCT_SUCCESS = '[Product] Get Product Success';
-  public getProductSuccess(product: Product) {
-    return {
-      type: ProductActions.GET_PRODUCT_SUCCESS,
-      payload: product
-    };
-  }
-
-  // tslint:disable-next-line
-  public static ADD_PRODUCT = '[Product] Add Product';
-  public addProduct(product: Product) {
-    return {
-      type: ProductActions.ADD_PRODUCT,
-      payload: product
-    };
-  }
-
-  // tslint:disable-next-line
-  public static ADD_PRODUCT_SUCCESS = '[Product] Add Product Success';
-  public addProductSuccess(product: Product) {
-    this._mdSnackBar.open('Products were loaded', '', {duration: 3000});
-    return {
-      type: ProductActions.ADD_PRODUCT_SUCCESS,
-      payload: product
-    };
-  }
+export class LoadProducts implements Action {
+  public readonly type: string = LOAD_PRODUCTS;
+  // public constructor() { }
 }
+
+// tslint:disable-next-line
+export class LoadProductsSuccess implements Action {
+  public readonly type: string = LOAD_PRODUCTS_SUCCESS;
+  public constructor(public payload: Product[]) { }
+}
+
+// tslint:disable-next-line
+export class GetProduct implements Action {
+  public readonly type: string = GET_PRODUCT;
+  public constructor(public id: string) { }
+}
+
+// tslint:disable-next-line
+export class GetProductSuccess implements Action {
+  public readonly type: string = GET_PRODUCT_SUCCESS;
+  public constructor(public product: Product) { }
+}
+
+// tslint:disable-next-line
+export class AddProduct implements Action {
+  public readonly type: string = ADD_PRODUCT;
+  public constructor(public product: Product) { }
+}
+
+// tslint:disable-next-line
+export class AddProductSuccess implements Action {
+  public readonly type: string = ADD_PRODUCT_SUCCESS;
+  public constructor(public product: Product) { }
+}
+
+export type Actions
+= LoadProducts
+| LoadProductsSuccess
+| GetProduct
+| GetProductSuccess
+| AddProduct
+| AddProductSuccess;

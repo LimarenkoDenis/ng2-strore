@@ -1,11 +1,9 @@
-import { ProductActions } from './../actions/product';
+import * as ProductActions from './../actions/product';
 import { Action, ActionReducer } from '@ngrx/store';
 
 const initialState: Product[] = [];
 
 export function productReducer(state: Product[] = initialState, action: any): Product[] {
-  // console.log(action.type);
-
   switch (action.type) {
 
     case ProductActions.LOAD_PRODUCTS_SUCCESS: {
