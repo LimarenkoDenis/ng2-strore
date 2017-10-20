@@ -22,22 +22,13 @@ export class ProductEffects {
     .map((products: Product[]) => new ProductActions.LoadProductsSuccess(products))
     .do(() => this._matSnackBar.open('Products were loaded', '', {duration: 3000}));
 
-
-  @Effect()
-  public getProduct$: Observable<Action> = this.actions$
-    .ofType(ProductActions.GET_PRODUCT)
-    .map((action: any) => action.payload)
-    .switchMap((id: string) => this._productService.getProduct(id))
-    .map((product: Product) => new ProductActions.GetProductSuccess(product))
-    .do(() => this._matSnackBar.open('Product were loaded', '', {duration: 3000}));
-
   @Effect()
   public addProduct$: Observable<Action> = this.actions$
     .ofType(ProductActions.ADD_PRODUCT)
     .map((action: any) => action.payload)
     .switchMap((product: Product) => this._productService.addProduct(product))
     .map((product: Product) => new ProductActions.AddProductSuccess(product))
-    .do(() => this._matSnackBar.open('Products were loaded', '', {duration: 3000}));
+    .do(() => this._matSnackBar.open('Product has been added', '', {duration: 3000}));
 
   public constructor(
     private actions$: Actions,

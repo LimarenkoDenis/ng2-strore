@@ -14,7 +14,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProductsComponent } from './products/products.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
@@ -25,7 +24,6 @@ import { LoginService } from './shared/services/login.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 
 import { environment } from '../environments/environment';
-import { DOMAIN } from './config';
 
 import { SortPipe } from './shared/pipes/sort.pipe';
 import { SearchPipe } from './shared/pipes/search.pipe';
@@ -33,7 +31,7 @@ import { CategoryPipe } from './shared/pipes/category.pipe';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers } from './common/reducers';
 
@@ -54,7 +52,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     ProductsComponent,
     CartComponent,
     CategoryPipe,
-    ProductDetailComponent,
     FooterComponent,
     LoginComponent,
     ProductCreateComponent
@@ -70,24 +67,20 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     StoreModule.forRoot(reducers, {
       initialState: {
         auth: {
-          loggedIn: true
+          loggedIn: false
         }
       }
     }),
     EffectsModule.forRoot([ProductEffects, AuthEffects]),
-    // StoreDevtoolsModule.instrumentStore({
-    //   maxAge: 25
-    // }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
   providers: [
     ProductService,
-    {
-      provide: DOMAIN,
-      useValue: environment.domain,
-    },
     AuthGuardService,
     LoginService
   ],

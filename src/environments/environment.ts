@@ -5,7 +5,6 @@
 
 export const environment = {
   production: false,
-  domain: '',
   firebase: {
     apiKey: 'AIzaSyBRZUbSWiocFly2RcEMp8ezFszk4RtT3ss',
     authDomain: 'ngx-store-1b953.firebaseapp.com',

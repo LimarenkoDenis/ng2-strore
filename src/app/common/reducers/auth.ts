@@ -1,10 +1,10 @@
 import * as AuthActions from './../actions/auth';
 import { Action, ActionReducer } from '@ngrx/store';
 
-export function authReducer(state: User = {}, action: any) {
+export function authReducer(state: User = {}, action: any): User | boolean {
   switch (action.type) {
     case AuthActions.LOGIN_SUCCESS: {
-      return action.payload;
+      return {...action.payload};
     }
 
     case AuthActions.LOGIN_FAIL: {

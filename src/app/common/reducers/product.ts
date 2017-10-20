@@ -7,11 +7,7 @@ export function productReducer(state: Product[] = initialState, action: any): Pr
   switch (action.type) {
 
     case ProductActions.LOAD_PRODUCTS_SUCCESS: {
-      return action.payload;
-    }
-
-    case ProductActions.GET_PRODUCT_SUCCESS: {
-      return action.payload;
+      return [...action.payload];
     }
 
     case ProductActions.ADD_PRODUCT_SUCCESS: {

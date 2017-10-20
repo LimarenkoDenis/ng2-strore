@@ -21,9 +21,8 @@ export class HeaderComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.afAuth.authState.subscribe((user: User) => {
-      this.user = user;
-    });
+    this.afAuth.authState.subscribe((user: User) => this.user = user);
+    // selector
     this._store.select('cart').subscribe((product: Product[]) => this.amount = product.length);
   }
 

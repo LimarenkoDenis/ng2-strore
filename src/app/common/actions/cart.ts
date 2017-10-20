@@ -11,7 +11,7 @@ export const INCREASE_ITEM: string = '[Cart] Increase Item';
 
 export class LoadCartItems implements Action {
   public readonly type: string = LOAD_CART_ITEMS;
-  public constructor() { }
+  public constructor(public payload?: Product[]) { }
 }
 
 // tslint:disable-next-line
