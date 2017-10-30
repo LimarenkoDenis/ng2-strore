@@ -16,5 +16,13 @@ type User = {
 type AppState = {
   product: Product[],
   cart: Product[],
-  auth: User | boolean
+  auth: User | boolean,
+  form: any
+}
+
+type UserForm = {
+  name: string,
+  email: string,
+  phone: string,
+  address: string
 }
