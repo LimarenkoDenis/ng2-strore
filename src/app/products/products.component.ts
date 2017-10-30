@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   public products: Observable<Product[]>;
 
   public constructor(
-    private _store: Store<any>
+    private _store: Store<AppState>
   ) {
     this.products = _store.select('product');
   }

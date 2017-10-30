@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   public amount: number = 0;
 
   public constructor(
-    private _store: Store<any>,
+    private _store: Store<AppState>,
     private afAuth: AngularFireAuth,
   ) {
   }

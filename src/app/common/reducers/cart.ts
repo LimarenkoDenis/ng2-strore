@@ -5,13 +5,6 @@ const initialState: Product[] = [];
 
 export function cartReducer(products: Product[] = initialState, action: any): Product[] {
   switch (action.type) {
-    case CartActions.LOAD_CART_ITEMS_SUCCESS: {
-      return [...action.payload];
-    }
-
-    case CartActions.GET_CART_ITEM_SUCCESS: {
-      return [...action.payload];
-    }
 
     case CartActions.ADD_TO_CART: {
       const itemIndex: number = products.findIndex((product: Product) => product.id === action.payload.id);

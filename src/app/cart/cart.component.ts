@@ -15,13 +15,12 @@ export class CartComponent implements OnInit {
   public cart: Observable<Product[]>;
 
   public constructor(
-    private _store: Store<any>
+    private _store: Store<AppState>
   ) {
     this.cart = _store.select('cart');
   }
 
   public ngOnInit(): void {
-    this._store.dispatch(new CartActions.LoadCartItems());
     this._store.select('cart').subscribe((cart: Product[]) => this.calculateTotal(cart));
   }
 

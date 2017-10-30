@@ -12,3 +12,9 @@ type User = {
   email?: string,
   password?: string
 }
+
+type AppState = {
+  product: Product[],
+  cart: Product[],
+  auth: User | boolean
+}

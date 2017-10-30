@@ -8,6 +8,11 @@ import { routes } from './app.routes';
 
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -38,10 +43,6 @@ import { reducers } from './common/reducers';
 import { ProductEffects } from './common/effects/product';
 import { AuthEffects } from './common/effects/auth';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,13 +65,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    StoreModule.forRoot(reducers, {
-      initialState: {
-        auth: {
-          loggedIn: false
-        }
-      }
-    }),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ProductEffects, AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25

@@ -17,7 +17,14 @@ import {
   imports: [
     CommonModule,
     NoopAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
     MatInputModule,
+    MatListModule,
+    MatSelectModule,
+    MatSnackBarModule,
+    MatTabsModule,
     MatToolbarModule,
   ],
   exports: [

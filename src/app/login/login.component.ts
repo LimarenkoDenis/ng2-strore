@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   public constructor(
     private _fb: FormBuilder,
-    private _store: Store<any>
+    private _store: Store<AppState>
   ) {
     this.auth = this._fb.group({
       email: ['', Validators.required],
