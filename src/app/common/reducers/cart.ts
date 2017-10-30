@@ -25,7 +25,6 @@ export function cartReducer(products: Product[] = initialState, action: any): Pr
     case CartActions.REDUCE_ITEM: {
       const itemIndex: number = products.findIndex((product: Product) => product.id === action.payload.id);
       if (action.payload.amount === 0) {
-        // products.splice(itemIndex, 1);
         return [...products];
       }
       const updatedItem: Product = {...action.payload, amount: action.payload.amount - 1};
@@ -40,7 +39,8 @@ export function cartReducer(products: Product[] = initialState, action: any): Pr
       return [...products];
     }
 
-    default:
+    default: {
       return products;
+    }
   }
 }

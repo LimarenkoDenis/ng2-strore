@@ -22,7 +22,7 @@ export class FormDetailsComponent {
   }
 
   public createOrder(order: FormGroup): void {
-    console.log(order.value);
+    // get cart and send to server
   }
 }
 

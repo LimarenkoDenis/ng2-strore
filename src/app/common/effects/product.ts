@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
+import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
-// TODO error handling
 
 @Injectable()
 export class ProductEffects {
@@ -20,7 +20,12 @@ export class ProductEffects {
     .ofType(ProductActions.LOAD_PRODUCTS)
     .switchMap(() => this._productService.getProducts())
     .map((products: Product[]) => new ProductActions.LoadProductsSuccess(products))
-    .do(() => this._matSnackBar.open('Products were loaded', '', {duration: 3000}));
+    .do(() => this._matSnackBar.open('Products were loaded', '', {duration: 1000}))
+    .catch((err: Error) => {
+      // tslint:disable-next-line
+      console.log(err);
+      return of(new ProductActions.LoadProductsFail());
+    });
 
   @Effect()
   public addProduct$: Observable<Action> = this.actions$

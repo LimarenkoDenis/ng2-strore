@@ -14,7 +14,8 @@ export function productReducer(state: Product[] = initialState, action: any): Pr
       return [...state, action.payload];
     }
 
-    default:
+    default: {
       return state;
+    }
   }
 }

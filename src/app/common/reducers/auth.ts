@@ -16,10 +16,11 @@ export function authReducer(state: User = {}, action: any): User | boolean {
     }
 
     case AuthActions.LOGIOUT_FAIL: {
-      return state;
+      return {...state};
     }
 
-    default:
+    default: {
       return state;
+    }
   }
 }
